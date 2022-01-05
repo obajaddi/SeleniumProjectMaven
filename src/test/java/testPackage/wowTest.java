@@ -25,12 +25,12 @@ public class wowTest
 //
     @Test
     public void testwowTest() {
-        //System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--no-sandbox");
         WebDriver driver = new ChromeDriver();
-        
+
         driver.get("https://fr.wowhead.com/");
         // Verification titre de la page
         assertTrue(driver.getCurrentUrl().contains("https://fr.wowhead.com/"));
