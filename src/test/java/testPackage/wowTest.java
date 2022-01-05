@@ -24,12 +24,13 @@ public class wowTest
     }
 //
     @Test
-    public void testwowTest() {
+    public void testwowTest() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--no-sandbox");
-        WebDriver driver = new ChromeDriver();
+        chromeOptions.addArguments("--window-size=1920,1200");
+        WebDriver driver = new ChromeDriver(chromeOptions);
 
         driver.get("https://fr.wowhead.com/");
         // Verification titre de la page
@@ -37,20 +38,24 @@ public class wowTest
         // Accept cookies
         driver.findElement(By.id("onetrust-accept-btn-handler")).click();
         // wait of 2 seconds
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        // refuse cookies
+        Thread.sleep(2000);
+        //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        // refus alertes
         driver.findElement(By.xpath("//button[@class='notifications-dialog-buttons-decline btn']")).click();
         // wait of 2 seconds
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        Thread.sleep(2000);
+        //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         // search
         driver.findElement(By.xpath("//input[@name='q']")).sendKeys("Lardeur");
         driver.findElement(By.xpath("//a[@class='header-search-button fa fa-search']")).click();
         // wait of 2 seconds
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        Thread.sleep(2000);
+        //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         // Select boss
         driver.findElement(By.xpath("//td[@class='icon-boss-padded']/*[1]")).click();
         // wait of 2 seconds
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        Thread.sleep(2000);
+        //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         driver.quit();
     }
