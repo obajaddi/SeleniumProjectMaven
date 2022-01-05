@@ -24,7 +24,7 @@ public class wowTest
 //
     @Test
     public void testwowTest() {
-        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+        //System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.get("https://fr.wowhead.com/");
         // Verification titre de la page
