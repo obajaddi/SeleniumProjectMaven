@@ -44,7 +44,7 @@ public class wowTest
             driver_path = "src/test/resources/linux"+BROWSER;
             System.out.println("OS is : " + os + ", Path : " + driver_path);
         }
-        System.setProperty("webdriver.chrome.driver", driver_path + ", BROWSER" + BROWSER);
+        System.setProperty("webdriver.chrome.driver", driver_path);
         /*
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
