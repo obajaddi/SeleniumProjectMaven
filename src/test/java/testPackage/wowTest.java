@@ -23,21 +23,21 @@ public class wowTest
 
     @Before
     public void setUp(){
+        BROWSER = "geckodriver";//System.getProperty("browser");
         // Quel OS ?
         os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
             driver_path = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "win" + File.separator + BROWSER +".exe";
         } else if (os.contains("nux") || os.contains("nix") || os.contains("untu")) {
-            driver_path = "src/test/resources/linux"+BROWSER;
+            driver_path = "src/test/resources/linux/"+BROWSER;
         }
 
         // Browser choice
-        BROWSER = System.getProperty("browser");
         if (BROWSER == "chromedriver") {
-            System.setProperty("webdriver.gecko.driver", driver_path);
+            System.setProperty("webdriver.chrome.driver", driver_path);
             driver = new ChromeDriver();
         } else if (BROWSER == "geckodriver"){
-            System.setProperty("webdriver.chrome.driver", driver_path);
+            System.setProperty("webdriver.gecko.driver", driver_path);
             driver = new FirefoxDriver();
         }
 
@@ -60,6 +60,8 @@ public class wowTest
         driver.get("https://fr.wowhead.com/");
         // Verification titre de la page
         assertTrue(driver.getCurrentUrl().contains("https://fr.wowhead.com/"));
+        // wait of 2 seconds
+        Thread.sleep(2000);
         // Accept cookies
         driver.findElement(By.id("onetrust-accept-btn-handler")).click();
         // wait of 2 seconds
