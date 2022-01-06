@@ -44,7 +44,7 @@ public class wowTest
         }
         System.setProperty("webdriver.chrome.driver", driver_path);
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless");
+        //chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--window-size=1920,1200");
         WebDriver driver = new ChromeDriver(chromeOptions);
