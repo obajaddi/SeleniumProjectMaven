@@ -17,8 +17,10 @@ public class wowTest
 {
     protected String os;
     protected String driver_path;
+    protected  String BROWSER;
     @Before
     public void setUp(){
+        BROWSER = System.getProperty("browser");
         os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
             os = "Windows";
@@ -36,13 +38,13 @@ public class wowTest
     public void testwowTest() throws InterruptedException {
 
         if (os == "Windows") {
-            driver_path = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "win" + File.separator + "chromedriver.exe";
-            System.out.println("OS is : " + os + "Path : " + driver_path);
+            driver_path = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "win" + File.separator + BROWSER +".exe";
+            System.out.println("OS is : " + os + ", Path : " + driver_path + ", BROWSER" + BROWSER);
         }else if (os == "Linux") {
-            driver_path = "src/test/resources/linux/chromedriver";
-            System.out.println("OS is : " + os + "Path : " + driver_path);
+            driver_path = "src/test/resources/linux"+BROWSER;
+            System.out.println("OS is : " + os + ", Path : " + driver_path);
         }
-        System.setProperty("webdriver.chrome.driver", driver_path);
+        System.setProperty("webdriver.chrome.driver", driver_path + ", BROWSER" + BROWSER);
         /*
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
