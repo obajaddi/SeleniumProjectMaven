@@ -14,8 +14,16 @@ import java.util.concurrent.TimeUnit;
 
 public class wowTest
 {
+    protected String os;
+    protected String driver_path;
     @Before
     public void setUp(){
+        os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("win")) {
+            os = "Windows";
+        } else if (os.contains("nux") || os.contains("nix") || os.contains("untu")) {
+            os = "Linux";
+        }
     }
 
     @After
@@ -25,7 +33,13 @@ public class wowTest
 //
     @Test
     public void testwowTest() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+
+        if (os == "Windows") {
+            driver_path = "src\\test\\resources\\chromedriver";
+        }else if (os == "Linux") {
+            driver_path = "src/test/resources/chromedriver";
+        }
+        System.setProperty("webdriver.chrome.driver", driver_path);
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--no-sandbox");
