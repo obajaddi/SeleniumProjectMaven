@@ -36,7 +36,7 @@ public class wowTest
     public void testwowTest() throws InterruptedException {
 
         if (os == "Windows") {
-            driver_path = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "chromedriver";
+            driver_path = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "chromedriver.exe";
             System.out.println("OS is : " + os + "Path : " + driver_path);
         }else if (os == "Linux") {
             driver_path = "src/test/resources/chromedriver";
