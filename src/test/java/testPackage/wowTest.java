@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -17,16 +18,29 @@ public class wowTest
 {
     protected String os;
     protected String driver_path;
-    protected  String BROWSER;
+    protected String BROWSER;
+    protected WebDriver driver;
+
     @Before
     public void setUp(){
-        BROWSER = System.getProperty("browser");
+        // Quel OS ?
         os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) {
-            os = "Windows";
+            driver_path = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "win" + File.separator + BROWSER +".exe";
         } else if (os.contains("nux") || os.contains("nix") || os.contains("untu")) {
-            os = "Linux";
+            driver_path = "src/test/resources/linux"+BROWSER;
         }
+
+        // Browser choice
+        BROWSER = System.getProperty("browser");
+        if (BROWSER == "chromedriver") {
+            System.setProperty("webdriver.gecko.driver", driver_path);
+            driver = new ChromeDriver();
+        } else if (BROWSER == "geckodriver"){
+            System.setProperty("webdriver.chrome.driver", driver_path);
+            driver = new FirefoxDriver();
+        }
+
     }
 
     @After
@@ -37,20 +51,11 @@ public class wowTest
     @Test
     public void testwowTest() throws InterruptedException {
 
-        if (os == "Windows") {
-            driver_path = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "win" + File.separator + BROWSER +".exe";
-            System.out.println("OS is : " + os + ", Path : " + driver_path + ", BROWSER" + BROWSER);
-        }else if (os == "Linux") {
-            driver_path = "src/test/resources/linux"+BROWSER;
-            System.out.println("OS is : " + os + ", Path : " + driver_path);
-        }
-        System.setProperty("webdriver.chrome.driver", driver_path);
         /*
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--window-size=1280,");*/
-        WebDriver driver = new ChromeDriver();
 
         driver.get("https://fr.wowhead.com/");
         // Verification titre de la page
