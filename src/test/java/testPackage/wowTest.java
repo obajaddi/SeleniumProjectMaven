@@ -37,8 +37,10 @@ public class wowTest
 
         if (os == "Windows") {
             driver_path = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "chromedriver";
+            System.out.println("OS is : " + os + "Path : " + driver_path);
         }else if (os == "Linux") {
             driver_path = "src/test/resources/chromedriver";
+            System.out.println("OS is : " + os + "Path : " + driver_path);
         }
         System.setProperty("webdriver.chrome.driver", driver_path);
         ChromeOptions chromeOptions = new ChromeOptions();
