@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class wowTest
@@ -35,7 +36,7 @@ public class wowTest
     public void testwowTest() throws InterruptedException {
 
         if (os == "Windows") {
-            driver_path = "src\\test\\resources\\chromedriver";
+            driver_path = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "chromedriver";
         }else if (os == "Linux") {
             driver_path = "src/test/resources/chromedriver";
         }
