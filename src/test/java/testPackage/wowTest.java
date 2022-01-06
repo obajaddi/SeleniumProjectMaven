@@ -43,9 +43,12 @@ public class wowTest
             System.out.println("OS is : " + os + "Path : " + driver_path);
         }
         System.setProperty("webdriver.chrome.driver", driver_path);
+        /*
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--window-size=1280,800");
-        WebDriver driver = new ChromeDriver(chromeOptions);
+        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--window-size=1280,");*/
+        WebDriver driver = new ChromeDriver();
 
         driver.get("https://fr.wowhead.com/");
         // Verification titre de la page
